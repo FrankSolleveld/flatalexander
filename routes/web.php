@@ -10,7 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Adding routes
 
+// Adding homepage
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+});
+
+// Adding news page
+Route::get('/news', function () {
+    return view('news');
+});
+
+// Adding laundry reservations page
+Route::get('/laundry', function () {
+    return view('laundry');
+});
+
+// Adding support page
+Route::get('/support', function () {
+    return view('support');
+});
+
+// Adding regulations page
+Route::get('/regulations', function () {
+    return view('regulations');
 });
