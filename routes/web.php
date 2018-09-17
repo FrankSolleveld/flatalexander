@@ -36,3 +36,7 @@ Route::get('/support', function () {
 Route::get('/regulations', function () {
     return view('regulations');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
