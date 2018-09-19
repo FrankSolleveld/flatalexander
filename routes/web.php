@@ -14,7 +14,21 @@
 
 // Adding homepage
 Route::get('/', function () {
-    return view('home');
+    $name = 'Frenkie';
+
+    $age = 19;
+
+    $tasks = [
+
+        'Ga naar de winkel',
+        'Haal een brood',
+        'Betaal het brood',
+        'Bak het brood thuis in de oven'
+
+    ];
+
+    return view('home', compact('name','age', 'tasks'));
+
 });
 
 // Adding news page
