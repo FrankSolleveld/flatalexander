@@ -14,20 +14,26 @@
 
 // Adding homepage
 Route::get('/', function () {
-    $name = 'Frenkie';
 
-    $age = 19;
+    $tasks = DB::table('tasks')->get();
 
-    $tasks = [
+    return view('tasks.index', compact( 'tasks'));
 
-        'Ga naar de winkel',
-        'Haal een brood',
-        'Betaal het brood',
-        'Bak het brood thuis in de oven'
+});
 
-    ];
+Route::get('/tasks', function () {
 
-    return view('home', compact('name','age', 'tasks'));
+    $tasks = DB::table('tasks')->latest()->get();
+
+    return view('tasks.index', compact( 'tasks'));
+
+});
+
+Route::get('/tasks/{task}', function ($id) {
+
+    $task = DB::table('tasks')->find($id);
+
+    return view('tasks.show', compact('task'));
 
 });
 
