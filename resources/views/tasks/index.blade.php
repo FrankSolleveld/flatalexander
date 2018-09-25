@@ -2,7 +2,7 @@
 
 <html>
 <style>
-    body{
+    body {
         font-family: Verdana, sans-serif;
     }
 </style>
