@@ -1,6 +1,4 @@
 <?php
-
-use App\Task;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,24 +20,8 @@ Route::get('/', function () {
 
 });
 
-Route::get('/tasks', function () {
-
-    // Eloquent syntax. BIn the top we use App\Task so we don't have to repeat App\ everytime we use an Eloquent query,
-    $tasks = Task::all();
-
-    return view('tasks.index', compact( 'tasks'));
-
-});
-
-Route::get('/tasks/{task}', function ($id) {
-
-//    $task = DB::table('tasks')->find($id);
-
-    $task = Task::find($id);
-
-    return view('tasks.show', compact('task'));
-
-});
+Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/{task}', 'TasksController@show');
 
 // Adding news page
 Route::get('/news', function () {
