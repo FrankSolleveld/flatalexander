@@ -17,23 +17,23 @@ Route::get('/', 'HomeController@index');
 // Adding news page
 Route::get('/news', function () {
     return view('news');
-});
+})->name('news');
 
 // Adding laundry reservations page
 Route::get('/laundry', function () {
     return view('laundry');
-});
+})->name('laundry');
 
 // Adding support page
 Route::get('/support', function () {
     return view('support');
-});
+})->name('support');
 
 // Adding regulations page
 Route::get('/regulations', function () {
     return view('regulations');
-});
+})->name('regulations');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
