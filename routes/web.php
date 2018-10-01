@@ -12,16 +12,7 @@
 // Adding routes
 
 // Adding homepage
-Route::get('/', function () {
-
-    $tasks = DB::table('tasks')->get();
-
-    return view('tasks.index', compact( 'tasks'));
-
-});
-
-Route::get('/tasks', 'TasksController@index');
-Route::get('/tasks/{task}', 'TasksController@show');
+Route::get('/', 'HomeController@index');
 
 // Adding news page
 Route::get('/news', function () {

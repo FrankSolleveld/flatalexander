@@ -3,23 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Task;
+use App\Home;
 
-class TasksController extends Controller
+class HomeController extends Controller
 {
     public function index() {
-        // Eloquent syntax. BIn the top we use App\Task so we don't have to repeat App\ everytime we use an Eloquent query,
-        $tasks = Task::all();
-
-        return view('tasks.index', compact( 'tasks'));
-    }
-
-    public function show(Task $task) { // Task::find{wildcard}
-        //    $task = DB::table('tasks')->find($id);
-        //    $task = Task::find($id);
-
-        return $task;
-
-        return view('tasks.show', compact('task'));
+        return view('home.content');
     }
 }
