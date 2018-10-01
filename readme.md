@@ -7,4 +7,4 @@ In een periode van acht weken zal er een nieuwe site ontstaan gebouwd in Laravel
 Voor vragen kan je me mailen via 0940599@hr.nl.
 
 **ERD Diagram voor het wasmachinesysteem**
-![ERD](https://i.imgur.com/2LFMFK0.png)
+![ERD](https://i.imgur.com/tijuexh.png)
