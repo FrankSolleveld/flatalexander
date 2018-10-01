@@ -3,26 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Task;
 
-class HomeController extends Controller
+class TasksController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
+    public function index() {
+        // Eloquent syntax. BIn the top we use App\Task so we don't have to repeat App\ everytime we use an Eloquent query,
+        $tasks = Task::all();
+
+        return view('tasks.index', compact( 'tasks'));
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('home');
+    public function show(Task $task) { // Task::find{wildcard}
+        //    $task = DB::table('tasks')->find($id);
+        //    $task = Task::find($id);
+
+        return $task;
+
+        return view('tasks.show', compact('task'));
     }
 }
