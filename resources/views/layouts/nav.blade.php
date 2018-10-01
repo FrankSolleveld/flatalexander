@@ -11,13 +11,13 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('news') }}">News</a>
+                    <a class="nav-link" href="{{ route('news') }}">Nieuws</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('laundry') }}">Laundry Schedule</a>
+                    <a class="nav-link" href="{{ route('laundry') }}">Wasschema</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('regulations') }}">Regulations</a>
+                    <a class="nav-link" href="{{ route('regulations') }}">Reglement</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('support') }}">Support</a>

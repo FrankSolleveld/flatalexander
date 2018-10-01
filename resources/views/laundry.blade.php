@@ -14,7 +14,12 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                        Hoi, @if (null !== Auth::user())
+                                {{ Auth::user()->firstname }}.
+
+                        @else
+                          onbekende. Je moet ingelogd zijn om deze pagina te kunnen betreden.
+                            @endif
                     </div>
                 </div>
             </div>
