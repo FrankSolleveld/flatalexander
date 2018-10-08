@@ -22,7 +22,7 @@ Route::get('/news', function () {
 // Adding laundry reservations page
 Route::get('/laundry', function () {
     return view('laundry');
-})->name('laundry');
+})->name('laundry')->middleware('auth');
 
 // Adding support page
 Route::get('/support', function () {
@@ -33,6 +33,11 @@ Route::get('/support', function () {
 Route::get('/regulations', function () {
     return view('regulations');
 })->name('regulations');
+
+// Adding admin page
+Route::get('/admin', 'AdminController@index')->name('Admin');
+
+
 
 Auth::routes();
 
