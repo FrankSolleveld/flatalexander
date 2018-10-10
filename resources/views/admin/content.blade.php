@@ -16,6 +16,17 @@
                     </div>
 
                 </div>
+<br><br>
+                <div class="card">
+                    <div class="card-header">Beschikbare producten</div>
+
+                    <div class="card-body">
+                        @foreach ($products as $product)
+                            @include ('admin.products.product')
+                        @endforeach
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

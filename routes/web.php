@@ -38,6 +38,7 @@ Route::get('/regulations', function () {
 Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod');
 Route::post('/products', 'ProductsController@store');
+Route::get('/products/{product}','ProductsController@show');
 
 Auth::routes();
 
