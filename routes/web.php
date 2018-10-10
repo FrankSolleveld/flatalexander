@@ -35,9 +35,9 @@ Route::get('/regulations', function () {
 })->name('regulations');
 
 // Adding admin page
-Route::get('/admin', 'AdminController@index')->name('Admin');
-
-
+Route::get('/admin', 'AdminController@index')->name('admin');
+Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod');
+Route::post('/products', 'ProductsController@store');
 
 Auth::routes();
 

@@ -12,6 +12,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct() {
+        $this->middleware('admin');
+    }
+
     public function index()
     {
         //
@@ -24,7 +29,7 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.products.create');
     }
 
     /**
@@ -35,7 +40,9 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Product::create(request(['name']));
+
+        return redirect('/admin');
     }
 
     /**
@@ -46,7 +53,7 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view ('products.show');
     }
 
     /**
