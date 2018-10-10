@@ -40,6 +40,9 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate(request(), [
+            'name' => 'required|min:5'
+        ]);
         Product::create(request(['name']));
 
         return redirect('/admin');
