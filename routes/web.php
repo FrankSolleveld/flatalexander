@@ -39,6 +39,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod');
 Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','ProductsController@show');
+Route::get('/admin/users', 'AdminController@userShow')->name('users');
 
 Auth::routes();
 
