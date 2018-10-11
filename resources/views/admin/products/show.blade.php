@@ -10,6 +10,7 @@
 
                     <div class="card-body">
                         <p>{{$product->name}}</p>
+                        @include('admin.backbutton')
                     </div>
 
                 </div>
