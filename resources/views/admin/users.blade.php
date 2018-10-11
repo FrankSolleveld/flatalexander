@@ -8,6 +8,7 @@
             <th scope="col">Administrator</th>
             <th scope="col">Voornaam</th>
             <th scope="col">Achternaam</th>
+            <th scope="col">Huisnummer</th>
 
         </tr>
         </thead>
@@ -22,6 +23,7 @@
                     @endif
                     <td>{{$user->firstname}}</td>
                     <td>{{$user->lastname}}</td>
+                    <td>{{$user->housenumber}}</td>
                 </tr>
             @endforeach
         </tbody>

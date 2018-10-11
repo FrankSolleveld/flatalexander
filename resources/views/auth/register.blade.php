@@ -27,7 +27,6 @@
                         </div>
 
                         <div class="form-group row">
-
                             <label for="lastname" class="col-md-4 col-form-label text-md-right">{{ __('Last Name') }}</label>
 
                             <div class="col-md-6">
@@ -37,6 +36,21 @@
                                         <strong>{{ $errors->first('lastname') }}</strong>
                                     </span>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('House Number') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="housenumber" type="text" class="form-control{{ $errors->has('housenumber') ? ' is-invalid' : '' }}" name="housenumber" value="{{ old('housenumber') }}">
+
+                                @if ($errors->has('housenumber'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('housenumber') }}</strong>
+                                    </span>
+                                @endif
+
                             </div>
                         </div>
 
