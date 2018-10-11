@@ -6,16 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reservation extends Model
 {
+    protected $table = 'reservations';
 
     public function user(){
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function product(){
-        return $this->hasMany(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function timeslot(){
-        return $this->hasMany(Timeslot::class);
+        return $this->hasOne(Timeslot::class);
     }
 }

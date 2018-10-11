@@ -4,9 +4,9 @@ namespace App;
 
 class Product extends Model
 {
-    public function reservation() {
+    public function reservations() {
 
-        return $this->belongsTo('App\Reservation');
+        return $this->hasMany(Reservation::class);
 
     }
 }

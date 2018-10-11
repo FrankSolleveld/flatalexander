@@ -41,6 +41,8 @@ Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','ProductsController@show');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
 
+Route::get('/reservations', 'ReservationsController@index');
+
 Auth::routes();
 
 

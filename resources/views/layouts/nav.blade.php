@@ -22,9 +22,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('support') }}">Support</a>
                 </li>
+                @if(Auth::user() && Auth::user()->isAdmin === 1)
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin') }}">Admin</a>
                 </li>
+                @endif
             </ul>
 
             <!-- Right Side Of Navbar -->

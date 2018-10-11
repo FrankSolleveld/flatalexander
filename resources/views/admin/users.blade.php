@@ -1,7 +1,8 @@
 @extends('layouts.layout')
 
 @section('content')
-    <table class="table">
+    <div class="container">
+    <table class="table table-hover">
         <thead>
         <tr>
             <th scope="col">USER ID</th>
@@ -28,6 +29,6 @@
             @endforeach
         </tbody>
     </table>
-
-    @include('admin.backbutton')
+        <div class="col-sm-5">@include('admin.backbutton')</div>
+    </div>
 @endsection
