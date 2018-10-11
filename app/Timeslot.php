@@ -8,7 +8,7 @@ class Timeslot extends Model
 {
     public function reservation() {
 
-        return $this->belongsTo('App\Reservation');
+        return $this->belongsTo(Reservation::class);
 
     }
 

@@ -8,14 +8,14 @@ class Reservation extends Model
 {
 
     public function user(){
-        return $this->hasMany('App\User');
+        return $this->hasMany(User::class);
     }
 
     public function product(){
-        return $this->hasMany('App\Product');
+        return $this->hasMany(Product::class);
     }
 
     public function timeslot(){
-        return $this->hasMany('App\Timeslot');
+        return $this->hasMany(Timeslot::class);
     }
 }

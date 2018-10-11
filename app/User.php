@@ -29,7 +29,7 @@ class User extends Authenticatable
     ];
 
     public function reservation(){
-        return $this->belongsTo('App\Reservation');
+        return $this->belongsTo(Reservation::class);
     }
 
 }
