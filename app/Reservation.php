@@ -17,6 +17,6 @@ class Reservation extends Model
     }
 
     public function timeslot(){
-        return $this->hasOne(Timeslot::class);
+        return $this->belongsTo(Timeslot::class);
     }
 }

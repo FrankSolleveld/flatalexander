@@ -14,7 +14,7 @@
                         @foreach($product->reservations as $reservation)
                             <li class="list-group-item">
                                 {{$reservation->user->firstname}} {{$reservation->user->lastname}} ({{$reservation->user->housenumber}}) om
-                                {{--{{$reservation->timeslot->timeslot}}--}}
+                                {{$reservation->timeslot['timeslot']}}
                             </li>
                         @endforeach
                     </ul>
