@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use Illuminate\Http\Request;
 Use DB;
+use App\Timeslot;
 
 class ProductsController extends Controller
 {
@@ -59,13 +60,16 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        $reservations = DB::table('reservations')
-            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
-            ->join('users', 'reservations.user_id', '=', 'users.id')
-            ->join('products', 'reservations.product_id', '=', 'products.id')
-        ->get();
+        $filteredTimeSlots = DB::table('timeslots')
+            ->join('reservations', 'timeslots.id', '=', 'reservations.timeslot_id')
+            ->where('product_id', $product->id)
+            ->get();
 
-        return view ('admin.products.show', compact('product', 'reservations'));
+        $timeslots = Timeslot::all();
+
+
+//        dd($filteredTimeSlots);
+        return view ('reservations.show', compact('product', 'filteredTimeSlots', 'timeslots'));
     }
 
     /**

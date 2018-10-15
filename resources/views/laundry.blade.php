@@ -10,30 +10,35 @@
                     <div class="card-body">
                         Hoi, {{ Auth::user()->firstname }}.
                     <div class="container">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th></th>
 
-                                    @foreach($allTimeslots as $timeslot)
-                                        <th scope="col">{{$timeslot['timeslot']}}</th>
-                                    @endforeach
-                                </tr>
-                            </thead>
-                            <tbody>
+                        @foreach ($products as $product)
+                           <br> @include ('reservations.products')
+                        @endforeach
 
-                                    @foreach($products as $product)
-                                        <tr>
-                                        <th scope="row">{{$product->name}}</th>
-                                        @foreach($unavailableTimeslots as $unavailableTimeslot)
-                                                <td><button class="btn" >Niet mogelijk</button></td>
-                                        @endforeach
-                                        </tr>
-                                    @endforeach
+                        {{--<table class="table table-hover">--}}
+                            {{--<thead>--}}
+                                {{--<tr>--}}
+                                    {{--<th></th>--}}
 
-                            </tbody>
-                            <?= print_r($unavailableTimeslots)?>
-                        </table>
+                                    {{--@foreach($allTimeslots as $timeslot)--}}
+                                        {{--<th scope="col">{{$timeslot['timeslot']}}</th>--}}
+                                    {{--@endforeach--}}
+                                {{--</tr>--}}
+                            {{--</thead>--}}
+                            {{--<tbody>--}}
+
+                                    {{--@foreach($products as $product)--}}
+                                        {{--<tr>--}}
+                                        {{--<th scope="row">{{$product->name}}</th>--}}
+                                        {{--@foreach($unavailableTimeslots as $unavailableTimeslot)--}}
+                                                {{--<td><button class="btn" >Niet mogelijk</button></td>--}}
+                                        {{--@endforeach--}}
+                                        {{--</tr>--}}
+                                    {{--@endforeach--}}
+
+                            {{--</tbody>--}}
+
+                        {{--</table>--}}
                     </div>
                     </div>
                 </div>

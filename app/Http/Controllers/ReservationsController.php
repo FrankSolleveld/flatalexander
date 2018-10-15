@@ -21,7 +21,6 @@ class ReservationsController extends Controller
 
         $unavailableTimeslots = DB::table('reservations')
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
-//            ->join('users', 'reservations.user_id', '=', 'users.id')
             ->join('products', 'reservations.product_id', '=', 'products.id')
             ->get();
 
@@ -60,7 +59,7 @@ class ReservationsController extends Controller
      */
     public function show(Reservation $reservation)
     {
-        //
+
     }
 
     /**
