@@ -20,9 +20,7 @@ Route::get('/news', function () {
 })->name('news');
 
 // Adding laundry reservations page
-Route::get('/laundry', function () {
-    return view('laundry');
-})->name('laundry')->middleware('auth');
+Route::get('/laundry', 'ReservationsController@index')->name('laundry')->middleware('auth');
 
 // Adding support page
 Route::get('/support', function () {

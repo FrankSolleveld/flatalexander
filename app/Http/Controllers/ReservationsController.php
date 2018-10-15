@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Timeslot;
 use App\Reservation;
 use Illuminate\Http\Request;
 
@@ -15,10 +16,10 @@ class ReservationsController extends Controller
      */
     public function index()
     {
-        $res = Reservation::find(1);
-        //
-        $product = Product::find(1);
-        return view('reservations.index', compact('res', 'product'));
+        $res = Reservation::all();
+        $timeslots = Timeslot::all();
+        $products = Product::all();
+        return view('laundry', compact('res', 'products', 'timeslots'));
     }
 
     /**

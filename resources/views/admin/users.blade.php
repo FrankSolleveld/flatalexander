@@ -16,7 +16,7 @@
         <tbody>
             @foreach($users as $user)
                 <tr>
-                    <th scope="row">{{$user->id}}</th>
+                    <td scope="row">{{$user->id}}</td>
                     @if($user->isAdmin === 1)
                         <td>Ja</td>
                     @else
