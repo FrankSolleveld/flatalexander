@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Dashboard</div>
 
@@ -14,8 +14,8 @@
                             <thead>
                                 <tr>
                                     <th></th>
-                                    {{--{{dd($timeslots)}}--}}
-                                    @foreach($timeslots as $timeslot)
+
+                                    @foreach($allTimeslots as $timeslot)
                                         <th scope="col">{{$timeslot['timeslot']}}</th>
                                     @endforeach
                                 </tr>
@@ -25,13 +25,14 @@
                                     @foreach($products as $product)
                                         <tr>
                                         <th scope="row">{{$product->name}}</th>
-                                        @foreach($timeslots as $timeslot)
-                                            <td>Reserveer</td>
+                                        @foreach($unavailableTimeslots as $unavailableTimeslot)
+                                                <td><button class="btn" >Niet mogelijk</button></td>
                                         @endforeach
                                         </tr>
                                     @endforeach
 
                             </tbody>
+                            <?= print_r($unavailableTimeslots)?>
                         </table>
                     </div>
                     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use Illuminate\Http\Request;
+Use DB;
 
 class ProductsController extends Controller
 {
@@ -58,8 +59,13 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-//        $product = Product::find($id);
-        return view ('admin.products.show', compact('product'));
+        $reservations = DB::table('reservations')
+            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
+            ->join('users', 'reservations.user_id', '=', 'users.id')
+            ->join('products', 'reservations.product_id', '=', 'products.id')
+        ->get();
+
+        return view ('admin.products.show', compact('product', 'reservations'));
     }
 
     /**

@@ -11,14 +11,17 @@
                     <div class="card-body">
                         <p>{{$product->name}}</p>
                     <ul class="list-group">
-                        @foreach($product->reservations as $reservation)
-                            <li class="list-group-item">
-                                {{$reservation->user->firstname}} {{$reservation->user->lastname}} ({{$reservation->user->housenumber}}) om
-                                {{$reservation->timeslot['timeslot']}}
-                            </li>
+                        @foreach($reservations as $reservation)
+
+                                @if($reservation->name === $product->name)
+                                <li class="list-group-item">
+                                    {{$reservation->firstname}} {{$reservation->lastname}} van ({{$reservation->housenumber}}) om {{$reservation->timeslot}}
+                                </li>
+                                @endif
                         @endforeach
                     </ul>
                         @include('admin.backbutton')
+
                     </div>
 
                 </div>

@@ -6,6 +6,7 @@ use App\Product;
 use App\Timeslot;
 use App\Reservation;
 use Illuminate\Http\Request;
+use DB;
 
 class ReservationsController extends Controller
 {
@@ -17,9 +18,17 @@ class ReservationsController extends Controller
     public function index()
     {
         $res = Reservation::all();
-        $timeslots = Timeslot::all();
+
+        $unavailableTimeslots = DB::table('reservations')
+            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
+//            ->join('users', 'reservations.user_id', '=', 'users.id')
+            ->join('products', 'reservations.product_id', '=', 'products.id')
+            ->get();
+
+        $allTimeslots = Timeslot::all();
+
         $products = Product::all();
-        return view('laundry', compact('res', 'products', 'timeslots'));
+        return view('laundry', compact('res', 'products', 'allTimeslots', 'unavailableTimeslots'));
     }
 
     /**
