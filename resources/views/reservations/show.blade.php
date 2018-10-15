@@ -10,12 +10,8 @@
 
                     <div class="card-body">
 
-                        {{dd($timeslots)}}
-                        @foreach($timeslots as $timeslot)
-
-                            @if ($timeslot->timeslot == $filteredTimeSlots->timeslot)
+                        @foreach($timeslotsRemaining as $timeslot)
                             <li>{{$timeslot->timeslot}}</li>
-                            @endif
                         @endforeach
 
                     </div>

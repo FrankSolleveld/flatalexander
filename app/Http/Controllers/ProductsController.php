@@ -65,11 +65,16 @@ class ProductsController extends Controller
             ->where('product_id', $product->id)
             ->get();
 
+        $timeslotsRemaining = DB::table('timeslots')
+            ->leftJoin('reservations', 'timeslots.id', '=', 'reservations.timeslot_id')
+            ->whereNull('reservations.timeslot_id')
+            ->get();
+
         $timeslots = Timeslot::all();
 
 
 //        dd($filteredTimeSlots);
-        return view ('reservations.show', compact('product', 'filteredTimeSlots', 'timeslots'));
+        return view ('reservations.show', compact('product', 'filteredTimeSlots', 'timeslots', 'timeslotsRemaining'));
     }
 
     /**
