@@ -14,6 +14,9 @@
 // Adding homepage
 Route::get('/', 'HomeController@index');
 
+// Adding profile page
+Route::get('/', 'UserController@index')->name('profile')->middleware('auth');
+
 // Adding news page
 Route::get('/news', function () {
     return view('news');

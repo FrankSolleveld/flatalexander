@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Reservation;
 use Illuminate\Http\Request;
 Use DB;
 use App\Timeslot;
+use Illuminate\Support\Facades\Auth;
 
 class ProductsController extends Controller
 {
@@ -60,18 +62,23 @@ class ProductsController extends Controller
      */
     public function show(Product $product)
     {
-        $filteredTimeSlots = DB::table('timeslots')
-            ->join('reservations', 'timeslots.id', '=', 'reservations.timeslot_id')
-            ->where('product_id', $product->id)
-            ->get();
+        $reservations = Reservation::where('product_id', $product->id)->get();
 
-        $timeslotsRemaining = DB::table('timeslots')
-            ->leftJoin('reservations', 'timeslots.id', '=', 'reservations.timeslot_id')
-            ->whereNull('reservations.timeslot_id')
-            ->get();
+        $filteredTimeSlots = DB::table('timeslots');
 
-        $timeslots = Timeslot::all();
+        foreach ($reservations as $reservation)
+        {
+            $filteredTimeSlots->where('id', '!=', $reservation->timeslot_id);
+        }
 
+        $filteredTimeSlots = $filteredTimeSlots->get();
+//
+//        $filtered = Timeslot::join('reservations', function($join) {
+//            $join->on('timeslots.id', '!=', 'reservations.timeslot_id')
+//            ->where('reservations.product_id', $product->id);
+//        })->get();
+//
+//        dd($filtered);
 
 //        dd($filteredTimeSlots);
         return view ('reservations.show', compact('product', 'filteredTimeSlots', 'timeslots', 'timeslotsRemaining'));
