@@ -44,8 +44,6 @@ class ReservationsController extends Controller
 
         $reservation->save();
 
-
-
         return redirect('laundry');
     }
 
@@ -57,16 +55,7 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-//        $reservation = new Reservation;
-//        $reservation->user_id = Reservation::get(Auth::user()->id);
-//        $reservation->product_id = Reservation::get('product_id');
-//        $reservation->timeslot_id = Reservation::get('timeslot_id');
-//
-//        $reservation->save();
-//
-//
-//
-//        return redirect('laundry');
+
 
     }
 

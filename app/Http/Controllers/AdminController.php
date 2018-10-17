@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Admin;
 use App\Product;
 Use App\User;
+use App\Reservation;
 Use DB;
 
 class AdminController extends Controller
@@ -32,6 +33,18 @@ class AdminController extends Controller
             ->join('users', 'reservations.user_id', '=', 'users.id')
             ->join('products', 'reservations.product_id', '=', 'products.id')
             ->get();
+
+
         return view ('admin.products.show', compact('product', 'reservations'));
+    }
+
+    public function reservationShow(Reservation $reservation){
+        $reservations = DB::table('reservations')
+            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
+            ->join('users', 'reservations.user_id', '=', 'users.id')
+            ->join('products', 'reservations.product_id', '=', 'products.id')
+            ->get();
+
+        return view ('admin.reservations.summary', compact('reservarion','reservations'));
     }
 }

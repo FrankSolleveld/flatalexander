@@ -13,7 +13,7 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('laundry', function (Blueprint $table) {
+        Schema::create('reservations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('product_id');
@@ -29,6 +29,6 @@ class CreateReservationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laundry');
+        Schema::dropIfExists('reservations');
     }
 }

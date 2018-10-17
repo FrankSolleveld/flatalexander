@@ -25,6 +25,7 @@
                         @foreach ($products as $product)
                             @include ('admin.products.product')
                         @endforeach
+                            <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("reservations") }}'">Reservering overzicht</button>
                     </div>
 
                 </div>
