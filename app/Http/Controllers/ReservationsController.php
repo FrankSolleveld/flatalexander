@@ -27,7 +27,7 @@ class ReservationsController extends Controller
         $allTimeslots = Timeslot::all();
 
         $products = Product::all();
-        return view('laundry', compact('res', 'products', 'allTimeslots', 'unavailableTimeslots'));
+        return view('reservations', compact('res', 'products', 'allTimeslots', 'unavailableTimeslots'));
     }
 
     /**

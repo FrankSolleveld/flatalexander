@@ -23,9 +23,17 @@ class ProductsController extends Controller
 
     public function index()
     {
-        $products = Product::all();
+        $res = Reservation::all();
 
-        return view ('admin.content', compact('products'));
+        $unavailableTimeslots = DB::table('reservations')
+            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
+            ->join('products', 'reservations.product_id', '=', 'products.id')
+            ->get();
+
+        $allTimeslots = Timeslot::all();
+
+        $products = Product::all();
+        return view('laundry', compact('res', 'products', 'allTimeslots', 'unavailableTimeslots'));
     }
 
     /**
@@ -73,15 +81,15 @@ class ProductsController extends Controller
 
         $filteredTimeSlots = $filteredTimeSlots->get();
 //
-//        $filtered = Timeslot::join('reservations', function($join) {
-//            $join->on('timeslots.id', '!=', 'reservations.timeslot_id')
-//            ->where('reservations.product_id', $product->id);
+//        $filtered = Timeslot::join('laundry', function($join) {
+//            $join->on('timeslots.id', '!=', 'laundry.timeslot_id')
+//            ->where('laundry.product_id', $product->id);
 //        })->get();
 //
 //        dd($filtered);
 
 //        dd($filteredTimeSlots);
-        return view ('reservations.show', compact('product', 'filteredTimeSlots', 'timeslots', 'timeslotsRemaining'));
+        return view ('laundry.show', compact('product', 'filteredTimeSlots', 'timeslots', 'timeslotsRemaining'));
     }
 
     /**

@@ -11,9 +11,15 @@
 
                     <div class="card-body">
                         <ul class="list-unstyled">
+                            <form method="POST" action="/laundry">
+                            <div id="form-group">
                         @foreach($filteredTimeSlots as $timeslot)
-                            <button value="{{$timeslot->id}}"class="list-group-item available-products">{{$timeslot->timeslot}}</button>
+                                <button value="{{$timeslot->id}}"type="submit" class="btn btn-primary">{{$timeslot->timeslot}}</button><br>
                         @endforeach
+                            </div>
+                                @include('layouts.errors')
+                            </form>
+
                         </ul>
 
                     </div>

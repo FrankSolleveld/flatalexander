@@ -22,9 +22,9 @@ Route::get('/news', function () {
     return view('news');
 })->name('news');
 
-// Adding laundry reservations page
-Route::get('/laundry', 'ReservationsController@index')->name('laundry')->middleware('auth');
-Route::get('/reservations/{product}','ProductsController@show');
+// Adding laundry laundry page
+Route::get('/laundry', 'ProductsController@index')->name('laundry')->middleware('auth');
+Route::get('/laundry/{product}','ProductsController@show');
 
 // Adding support page
 Route::get('/support', function () {
@@ -43,7 +43,7 @@ Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','AdminController@productShow');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
 
-Route::get('/reservations', 'ReservationsController@index');
+//Route::get('/laundry', 'ReservationsController@index');
 
 Auth::routes();
 
