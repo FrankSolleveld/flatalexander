@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Timeslot;
 use App\Reservation;
-use Illuminate\Http\Request;
+use Request;
 use DB;
 
 class ReservationsController extends Controller
@@ -37,7 +37,16 @@ class ReservationsController extends Controller
      */
     public function create()
     {
-        //
+        $reservation = new Reservation;
+        $reservation->user_id = Request::get('user_id');
+        $reservation->product_id = Request::get('product_id');
+        $reservation->timeslot_id = Request::get('timeslot_id');
+
+        $reservation->save();
+
+
+
+        return redirect('laundry');
     }
 
     /**
@@ -48,7 +57,17 @@ class ReservationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+//        $reservation = new Reservation;
+//        $reservation->user_id = Reservation::get(Auth::user()->id);
+//        $reservation->product_id = Reservation::get('product_id');
+//        $reservation->timeslot_id = Reservation::get('timeslot_id');
+//
+//        $reservation->save();
+//
+//
+//
+//        return redirect('laundry');
+
     }
 
     /**
