@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Timeslot;
 use App\Reservation;
+use Illuminate\Support\Facades\Auth;
 use Request;
 use DB;
 
@@ -67,7 +68,16 @@ class ReservationsController extends Controller
      */
     public function show(Reservation $reservation)
     {
+        $user = Auth::user();
+        $res = DB::table('reservations')->where('user_id', $user->id);
 
+        $reservations = DB::table('reservations')
+            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
+            ->join('products', 'reservations.product_id', '=', 'products.id')
+            ->where('user_id', $user->id)
+            ->get();
+
+        return view('profile.reservations')->with (compact('reservations'));
     }
 
     /**

@@ -6,6 +6,8 @@ Route::get('/', 'HomeController@index');
 Route::get('/profile/index', 'UserController@index')->name('profile')->middleware('auth');
 Route::get('/profile/edit', 'UserController@edit')->name('profile_edit');
 Route::put('/profile/update/{id}', 'UserController@update')->name('profile_update');
+Route::get('/profile/reservations', 'ReservationsController@show')->name('profile_reservations');
+Route::get('/profile/reservations/delete', 'ReservationsController@delete')->name('reservation_delete');
 
 // Adding news page
 Route::get('/news', function () {
