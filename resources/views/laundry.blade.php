@@ -15,7 +15,17 @@
                            <br> @include ('laundry.products')
                         @endforeach
 
+                            {{--{!! Form::open(['action' => 'ProductsController@index']) !!}--}}
+                            {{--{{Form::token()}}--}}
+                            {{--<div class="form-group">--}}
+                                {{--{{Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Zoek een product...', 'style' => 'width: 50%'])}}--}}
+                                {{--{{Form::select('product', $prod, null, ['class' => 'form-control', 'style' => 'display:inline'])}}--}}
+                                {{--{{Form::submit('Filter',['class' => 'btn btn-dark']) }}--}}
+                            {{--</div>--}}
+                            {{--{!! Form::close() !!}--}}
+
                     </div>
+
                     </div>
                 </div>
             </div>

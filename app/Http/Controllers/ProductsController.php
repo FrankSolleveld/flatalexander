@@ -19,6 +19,7 @@ class ProductsController extends Controller
     public function index()
     {
         $res = Reservation::all();
+        $prod = Product::pluck('name', 'id');
 
         $unavailableTimeslots = DB::table('reservations')
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
@@ -28,7 +29,12 @@ class ProductsController extends Controller
         $allTimeslots = Timeslot::all();
 
         $products = Product::all();
-        return view('laundry', compact('res', 'products', 'allTimeslots', 'unavailableTimeslots'));
+        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod' ));
+    }
+
+    public function filter(){
+        $prod = Product::pluck('name', 'id');
+        return view('laundry')->with(compact( 'prod' ));
     }
 
     /**

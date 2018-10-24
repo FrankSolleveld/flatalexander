@@ -11,13 +11,15 @@
                     <div class="card-body">
                         <p>{{$product->name}}</p>
                     <ul class="list-unstyled">
+                        <form method="POST" action="/reservations/delete">
                         @foreach($reservations as $reservation)
 
                                 @if($reservation->name === $product->name)
-                                <li class="list-group-item-light">
+                                <li class="list-group-item">
                                     {{$reservation->firstname}} {{$reservation->lastname}} van ({{$reservation->housenumber}}) om {{$reservation->timeslot}}
+                                    <button class="btn btn-outline-primary" type="submit">Delete</button>
                                 </li>
-                                    <button class="btn btn-primary">Delete</button>
+
                                 @endif
                         @endforeach
                     </ul>

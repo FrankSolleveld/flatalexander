@@ -3,7 +3,9 @@
 Route::get('/', 'HomeController@index');
 
 // Adding profile page
-Route::get('/profile', 'UserController@index')->name('profile')->middleware('auth');
+Route::get('/profile/index', 'UserController@index')->name('profile')->middleware('auth');
+Route::get('/profile/edit', 'UserController@edit')->name('profile_edit');
+Route::put('/profile/update/{id}', 'UserController@update')->name('profile_update');
 
 // Adding news page
 Route::get('/news', function () {
@@ -12,7 +14,7 @@ Route::get('/news', function () {
 
 // Adding laundry laundry page
 Route::get('/laundry', 'ProductsController@index')->name('laundry')->middleware('auth');
-Route::get('/laundry/{product}','ProductsController@show');
+Route::get('/laundry/{product}','ProductsController@show')->name('laundry_show');
 Route::post('/laundry/reserve', 'ReservationsController@create');
 
 // Adding support page
