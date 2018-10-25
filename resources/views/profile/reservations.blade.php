@@ -39,7 +39,8 @@
                             @endforeach
                             </tbody>
                         </table>
-
+                        <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("laundry") }}'">Naar wasschema</button>
+                        <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile") }}'">Profiel</button>
                     </div>
                 </div>
             </div>

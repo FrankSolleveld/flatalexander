@@ -9,6 +9,13 @@
                     <div class="card-header">Je profiel</div>
 
                     <div class="card-body">
+
+                        @if (session('res_deleted'))
+                            <div class="alert alert-success">
+                                {{ session('res_deleted') }}
+                            </div>
+                        @endif
+
                         <p>Je naam is {{Auth::user()->firstname}}</p>
                        Je kunt hier je gegevens bewerken en je reserveringen  inzien en verwijderen.<br>
                         <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_edit") }}'">Gegevens bewerken</button>
