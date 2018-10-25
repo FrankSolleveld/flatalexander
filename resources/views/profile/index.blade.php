@@ -20,6 +20,17 @@
                        Je kunt hier je gegevens bewerken en je reserveringen  inzien en verwijderen.<br>
                         <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_edit") }}'">Gegevens bewerken</button>
                         <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_reservations") }}'">Jouw reserveringen</button>
+
+                        <!-- Optie tot verwijderen van je account! -->
+                            <form method="POST" action="/profile/{{$user->id}}/delete">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                                <input type="hidden" value="{{$user->id}}" name="id">
+
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-danger delete-user" value="Delete Account" onclick="return confirm('Weet je zeker dat je je account wilt verwijderen? Flat Alexander is niet aansprakelijk voor verlies van data.')">
+                                </div>
+                            </form>
                     </div>
                 </div>
             </div>

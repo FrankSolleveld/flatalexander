@@ -100,6 +100,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::where('id', '=', $id)->delete();
+        return redirect('/')->with('acc_deleted', 'Je account is verwijdert uit ons systeem.');
     }
 }
