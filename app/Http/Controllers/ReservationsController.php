@@ -6,6 +6,7 @@ use App\Product;
 use App\Timeslot;
 use App\Reservation;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Request;
 use DB;
 
@@ -69,12 +70,13 @@ class ReservationsController extends Controller
     public function show(Reservation $reservation)
     {
         $user = Auth::user();
-        $res = DB::table('reservations')->where('user_id', $user->id);
-
-        $reservations = DB::table('reservations')
+        $reservations = DB::table('reservations')->where('user_id', $user->id)
+            ->select('reservations.*')
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
             ->join('products', 'reservations.product_id', '=', 'products.id')
-            ->where('user_id', $user->id)
+            // The joins cause a bug where the reservation id gets replaced by the product id or timeslot id. IF you get rid of the joins, the probem is gone. Adding this select rule fixes it.
+            ->select(DB::raw("reservations.*, timeslots.*,products.*, reservations.id as id"))
+
             ->get();
 
         return view('profile.reservations')->with (compact('reservations'));
@@ -109,8 +111,14 @@ class ReservationsController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reservation $reservation)
+    public function destroy($id)
     {
-        //
+//        $id = Request::get('id');
+
+
+        $res = Reservation::where('id', '=', $id)->delete();
+
+
+        return view('home');
     }
 }

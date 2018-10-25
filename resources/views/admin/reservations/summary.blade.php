@@ -13,6 +13,7 @@
                             <thead>
                             <tr>
                                 <th scope="col">User</th>
+                                <th scope="col">Res ID</th>
                                 <th scope="col">Product</th>
                                 <th scope="col">Tijdslot</th>
 
@@ -22,6 +23,7 @@
                             @foreach($reservations as $reservation)
                                 <tr>
                                     <td>{{$reservation->firstname}} {{$reservation->lastname}} </td>
+                                    <td>{{$reservation->id}}</td>
                                     <td>{{$reservation->name}}</td>
                                     <td>{{$reservation->timeslot}}</td>
                                 </tr>

@@ -9,7 +9,7 @@
                     <div class="card-header">Je profiel</div>
 
                     <div class="card-body">
-                        <p>Je naam is {{$user->firstname}}</p>
+                        <p>Je naam is {{Auth::user()->firstname}}</p>
                        Je kunt hier je gegevens bewerken en je reserveringen  inzien en verwijderen.<br>
                         <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_edit") }}'">Gegevens bewerken</button>
                         <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_reservations") }}'">Jouw reserveringen</button>

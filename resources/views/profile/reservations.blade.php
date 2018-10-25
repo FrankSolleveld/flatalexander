@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Overzicht van je uidige reserveringen.</div>
+                    <div class="card-header">Overzicht van je huidige reserveringen.</div>
 
                     <div class="card-body">
 
@@ -25,7 +25,16 @@
                                     <td scope="row">{{$reservation->id}}</td>
                                     <td>{{$reservation->name}}</td>
                                     <td>{{$reservation->timeslot}}</td>
-                                    <td><button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("reservation_delete") }}'">Verwijder</button></td>
+                                    <td>
+                                        <form method="POST" action="/profile/reservations/{{$reservation->id}}/delete">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <input type="hidden" value="{{$reservation->id}}" name="id">
+
+                                            <div class="form-group">
+                                                <input type="submit" class="btn btn-danger delete-user" value="Delete reservation">
+                                            </div>
+                                        </form></td>
                                 </tr>
                             @endforeach
                             </tbody>
