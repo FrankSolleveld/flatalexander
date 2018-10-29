@@ -8,6 +8,11 @@
                     <div class="card-header">Wasschema - Selecteer je product of bekijk je huidige reserveringen.</div>
 
                     <div class="card-body">
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         Hoi, {{ Auth::user()->firstname }}.
                     <div class="container">
 

@@ -46,7 +46,7 @@ class ReservationsController extends Controller
 
         $reservation->save();
 
-        return redirect('laundry');
+        return redirect('laundry')->with('success','Reservering succesvol gemaakt.');
     }
 
     /**

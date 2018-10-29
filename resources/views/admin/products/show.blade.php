@@ -15,7 +15,6 @@
                         @foreach($reservations as $reservation)
 
                                 @if($reservation->name === $product->name)
-                                    {{dd($reservation)}}
                                 <li class="list-group-item">
                                     {{$reservation->firstname}} {{$reservation->lastname}} van ({{$reservation->housenumber}}) om {{$reservation->timeslot}}
                                     <form method="POST" action="/products/{{$reservation->id}}/delete">
