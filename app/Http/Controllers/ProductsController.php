@@ -28,7 +28,7 @@ class ProductsController extends Controller
 
         $allTimeslots = Timeslot::all();
 
-        $products = Product::all();
+        $products = Product::where('active', '=', '1')->get();
         return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod' ));
     }
 
