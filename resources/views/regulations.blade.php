@@ -9,7 +9,8 @@
                     <div class="card-header">Reglement</div>
 
                     <div class="card-body">
-                        Hier vind je de terms & conditions van de flat.
+                        Hier vind je de terms & conditions van de flat. <hr>
+                        <i>Deze zullen binnenkort online komen.</i>
                     </div>
                 </div>
             </div>

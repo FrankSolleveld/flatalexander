@@ -43,8 +43,28 @@ class AdminController extends Controller
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
             ->join('users', 'reservations.user_id', '=', 'users.id')
             ->join('products', 'reservations.product_id', '=', 'products.id')
+            ->orderBy('timeslots.timeslot')
             ->get();
 
         return view ('admin.reservations.summary', compact('reservarion','reservations'));
+    }
+
+    public function reservationDelete($id){
+
+        $res = Reservation::where('reservation_id', '=', $id)->delete();
+
+        return redirect()->route('admin')->with('res_deleted', 'Reservering verwijderd.');
+    }
+
+    public function activeState(Request $request, $id) {
+
+        $product = Product::find($id);
+
+        $product->active = $request->input('active') ? 0:1;
+
+        $product->save();
+
+        return redirect()->route('admin')->with('status', 'Product status bijgewerkt.');
+
     }
 }

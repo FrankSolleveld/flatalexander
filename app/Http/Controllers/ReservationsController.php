@@ -118,6 +118,6 @@ class ReservationsController extends Controller
 
         $res = Reservation::where('id', '=', $id)->delete();
 
-        return redirect('/profile/index')->with('res_deleted', 'Reservering verwijderd.');
+        return redirect()->route('profile_reservations')->with('res_deleted', 'Reservering verwijderd.');
     }
 }

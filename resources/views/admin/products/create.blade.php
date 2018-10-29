@@ -14,6 +14,7 @@
                             <div class="form-group">
                                 <label for="title">Product naam</label>
                                 <input type="text" class="form-control" id="title" name="name" aria-describedby="emailHelp" placeholder="Voer product naam in" >
+                                <input type="hidden" value="1" name="active">
                             </div>
                             <div class="form-group">
                             <button type="submit" class="btn btn-primary">Invoeren</button>

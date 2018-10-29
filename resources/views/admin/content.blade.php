@@ -22,9 +22,12 @@
                     <div class="card-header">Beschikbare producten</div>
 
                     <div class="card-body">
-                        @foreach ($products as $product)
-                            @include ('admin.products.product')
-                        @endforeach
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                        @include ('admin.products.product')
                             <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("reservations") }}'">Reservering overzicht</button>
                     </div>
 

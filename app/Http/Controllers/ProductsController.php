@@ -58,7 +58,7 @@ class ProductsController extends Controller
         $this->validate(request(), [
             'name' => 'required|min:5'
         ]);
-        Product::create(request(['name']));
+        Product::create(request(['name', 'active']));
 
         return redirect('/admin');
     }
@@ -80,6 +80,8 @@ class ProductsController extends Controller
             $filteredTimeSlots->where('id', '!=', $reservation->timeslot_id);
         }
 
+//        dd($product->reservations()->pluck('timeslot_id'));
+
         $filteredTimeSlots = $filteredTimeSlots->get();
 //
 //        $filtered = Timeslot::join('laundry', function($join) {
@@ -88,7 +90,7 @@ class ProductsController extends Controller
 //        })->get();
 //
 //        dd($filtered);
-
+//
 //        dd($filteredTimeSlots);
         return view ('laundry.show', compact('product', 'filteredTimeSlots', 'timeslots', 'timeslotsRemaining'));
     }

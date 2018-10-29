@@ -9,6 +9,11 @@
                     <div class="card-header">Overzicht van je huidige reserveringen.</div>
 
                     <div class="card-body">
+                        @if (session('res_deleted'))
+                            <div class="alert alert-success">
+                                {{ session('res_deleted') }}
+                            </div>
+                        @endif
 
                         <table class="table table-hover">
                             <thead>

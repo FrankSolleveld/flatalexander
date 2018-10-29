@@ -15,9 +15,18 @@
                         @foreach($reservations as $reservation)
 
                                 @if($reservation->name === $product->name)
+                                    {{dd($reservation)}}
                                 <li class="list-group-item">
                                     {{$reservation->firstname}} {{$reservation->lastname}} van ({{$reservation->housenumber}}) om {{$reservation->timeslot}}
-                                    <button class="btn btn-outline-primary" type="submit">Delete</button>
+                                    <form method="POST" action="/products/{{$reservation->id}}/delete">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <input type="hidden" value="{{$reservation->id}}" name="id">
+
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-danger delete-user" value="Delete reservation">
+                                        </div>
+                                    </form>
                                 </li>
 
                                 @endif

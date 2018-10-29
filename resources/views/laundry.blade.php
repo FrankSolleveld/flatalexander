@@ -17,15 +17,6 @@
 
                             <br><button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_reservations") }}'">Jouw reserveringen</button>
 
-                            {{--{!! Form::open(['action' => 'ProductsController@index']) !!}--}}
-                            {{--{{Form::token()}}--}}
-                            {{--<div class="form-group">--}}
-                                {{--{{Form::text('search', '', ['class' => 'form-control', 'placeholder' => 'Zoek een product...', 'style' => 'width: 50%'])}}--}}
-                                {{--{{Form::select('product', $prod, null, ['class' => 'form-control', 'style' => 'display:inline'])}}--}}
-                                {{--{{Form::submit('Filter',['class' => 'btn btn-dark']) }}--}}
-                            {{--</div>--}}
-                            {{--{!! Form::close() !!}--}}
-
                     </div>
 
                     </div>

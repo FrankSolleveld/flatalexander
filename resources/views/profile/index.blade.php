@@ -10,11 +10,11 @@
 
                     <div class="card-body">
 
-                        @if (session('res_deleted'))
-                            <div class="alert alert-success">
-                                {{ session('res_deleted') }}
-                            </div>
-                        @endif
+                            @if (session('profile_updated'))
+                                <div class="alert alert-success">
+                                    {{ session('profile_updated') }}
+                                </div>
+                            @endif
 
                         <p>Je naam is {{Auth::user()->firstname}}</p>
                        Je kunt hier je gegevens bewerken en je reserveringen  inzien en verwijderen.<br>

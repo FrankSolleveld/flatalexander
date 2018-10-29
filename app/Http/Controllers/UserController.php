@@ -89,7 +89,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return view('profile.index');
+        return redirect()->route('profile')->with('profile_updated', 'Profiel bijgewerkt!');
     }
 
     /**
