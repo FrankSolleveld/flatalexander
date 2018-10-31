@@ -2,6 +2,13 @@
 
 @section('content')
     <div class="container">
+        <div class="search-form">
+            {!! Form::open(['action' => ['AdminController@searchStuff'], 'method' => 'GET']) !!}
+            @method('GET')
+            {{Form::text('search', '')}}
+            {{Form::submit('Zoek', ['class' => 'btn-primary',])}}
+            {!! Form::close() !!}
+        </div>
     <table class="table table-hover">
         <thead>
         <tr>

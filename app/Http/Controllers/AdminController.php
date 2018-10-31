@@ -67,4 +67,17 @@ class AdminController extends Controller
         return redirect()->route('admin')->with('status', 'Product status bijgewerkt.');
 
     }
+
+    public function searchStuff(Request $request) {
+
+        if ($request->has('search')){
+            $searchInput = $request->get('search');
+
+            $users = User::where('firstname', 'LIKE', '%' . $searchInput . '%')
+                    ->orWhere('lastname', 'LIKE', '%' .$searchInput.'%')
+                    ->orWhere('housenumber', 'LIKE', '%'.$searchInput.'%')->get();
+        }
+
+        return view('admin.users')->with(compact('users'));
+    }
 }

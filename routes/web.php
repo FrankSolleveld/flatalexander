@@ -39,6 +39,7 @@ Route::delete('/products/{reservation_id}/delete', 'AdminController@reservationD
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
 Route::get('/admin/reservations', 'AdminController@reservationShow')->name('reservations');
 Route::put('/admin/{id}/changeState/', 'AdminController@activeState');
+Route::get('/admin/usersearch', 'AdminController@searchStuff');
 
 //Route::get('/laundry', 'ReservationsController@index');
 

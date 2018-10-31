@@ -13,7 +13,11 @@
         <tr>
             <td>{{$product->id}}</td>
             <td><a href="/products/{{$product->id}}">{{$product->name}}</a></td>
-            <td>{{$product->active}}</td>
+            @if($product->active === 1)
+                <td>Actief</td>
+            @elseif($product->active === 0)
+                <td>Non-actief</td>
+            @endif
             <td>{!! Form::open(['action' => ['AdminController@activeState', $product->id], 'method' => 'POST']) !!}
             @method('PUT')
             {{Form::hidden('active', $product->active)}}
