@@ -70,7 +70,7 @@ class AdminController extends Controller
     public function reservationDelete($id){
 
         $res = Reservation::where('id', '=', $id)->delete();
-        return redirect()->route('admin')->with('res_deleted', 'Reservering verwijderd.');
+        return back()->with('res_deleted', 'Reservering verwijderd.');
     }
 
     public function activeState(Request $request, $id) {

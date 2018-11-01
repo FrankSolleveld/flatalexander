@@ -9,6 +9,11 @@
                     <div class="card-header">{{$product->name}}</div>
 
                     <div class="card-body">
+                        @if (session('res_deleted'))
+                            <div class="alert alert-success">
+                                {{ session('res_deleted') }}
+                            </div>
+                        @endif
                         <p>Zie je een lege pagina? Dan zijn er voor {{$product->name}} geen reserveringen geplaatst.</p>
                     <ul class="list-unstyled">
 
