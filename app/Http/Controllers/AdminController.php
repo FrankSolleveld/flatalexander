@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 use App\Admin;
 use App\Product;
 Use App\User;
@@ -18,6 +18,17 @@ class AdminController extends Controller
     public function index(){
         $products = Product::all();
 
+//        $reservationsPerDay = Reservation::with(['product_id' => function ($query){
+//            $query->join('products', 'reservations.product_id', '=', 'products.id');
+//        }])->get();
+
+
+//        $lolz =  Product::selectRaw('COUNT(reservations.id) FROM reservations WHERE reservations.product_id = products.id) countReservations)')->get();
+//
+//        $count =
+
+
+
         return view ('admin.content', compact('products'));
     }
 
@@ -29,10 +40,16 @@ class AdminController extends Controller
 
     public function productShow(Product $product){
         $reservations = DB::table('reservations')
+            ->where('product_id', $product->id)
+            ->select(DB::raw("reservations.*, timeslots.*,products.*, users.*, reservations.id as id"))
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
             ->join('users', 'reservations.user_id', '=', 'users.id')
             ->join('products', 'reservations.product_id', '=', 'products.id')
+            // The joins cause a bug where the reservation id gets replaced by the product id or timeslot id. IF you get rid of the joins, the probem is gone. Adding this select rule fixes it.
+
             ->get();
+
+
 
 
         return view ('admin.products.show', compact('product', 'reservations'));
@@ -51,8 +68,11 @@ class AdminController extends Controller
 
     public function reservationDelete($id){
 
-        $res = Reservation::where('reservation_id', '=', $id)->delete();
+        $reservation_id = Request::get($id);
 
+        dd($reservation_id);
+
+        $res = Reservation::where('id', '=', $reservation_id)->delete();
         return redirect()->route('admin')->with('res_deleted', 'Reservering verwijderd.');
     }
 

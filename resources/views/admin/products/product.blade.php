@@ -5,6 +5,7 @@
         <th scope="col">Product ID</th>
         <th scope="col">Product Naam</th>
         <th scope="col">Status</th>
+        <th scope="col">Reserveringen per dag</th>
 
     </tr>
     </thead>
@@ -18,6 +19,7 @@
             @elseif($product->active === 0)
                 <td>Non-actief</td>
             @endif
+            {{--<td>{{$reservationPerDay}}</td>--}}
             <td>{!! Form::open(['action' => ['AdminController@activeState', $product->id], 'method' => 'POST']) !!}
             @method('PUT')
             {{Form::hidden('active', $product->active)}}

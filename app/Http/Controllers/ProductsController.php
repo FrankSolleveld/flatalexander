@@ -29,7 +29,8 @@ class ProductsController extends Controller
         $allTimeslots = Timeslot::all();
 
         $products = Product::where('active', '=', '1')->get();
-        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod' ));
+
+        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'productz' ));
     }
 
     public function filter(){
@@ -83,7 +84,7 @@ class ProductsController extends Controller
 //        dd($product->reservations()->pluck('timeslot_id'));
 
         $filteredTimeSlots = $filteredTimeSlots->get();
-//
+////
 //        $filtered = Timeslot::join('laundry', function($join) {
 //            $join->on('timeslots.id', '!=', 'laundry.timeslot_id')
 //            ->where('laundry.product_id', $product->id);
