@@ -6,27 +6,29 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Product</div>
+                    <div class="card-header">{{$product->name}}</div>
 
                     <div class="card-body">
-                        <p>{{$product->name}}</p>
-
+                        <p>Zie je een lege pagina? Dan zijn er voor {{$product->name}} geen reserveringen geplaatst.</p>
                     <ul class="list-unstyled">
 
                         @foreach($reservations as $reservation)
-                            <form method="POST" action="/products/res/{{$reservation->id}}">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
+                            {!! Form::open(['action' => ['AdminController@reservationDelete', $reservation->id], 'method' => 'POST']) !!}
+                            {{--<form method="POST" action="/products/res/{{$reservation->id}}">--}}
+                                @method('DELETE')
                                 @if($reservation->name === $product->name)
                                 <li class="list-group-item">
                                     {{$reservation->firstname}} {{$reservation->lastname}} van ({{$reservation->housenumber}}) om {{$reservation->timeslot}}
-                                        <input type="hidden" value="{{$reservation->id}}" name="res_id">
+                                        {{--<input type="hidden" value="{{$reservation->id}}" name="res_id">--}}
+                                    {{Form::hidden('res_id', $reservation->id)}}
 
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-danger delete-user" value="Delete reservation">
+                                            {{--<input type="submit" class="btn btn-danger delete-user" value="Delete reservation">--}}
+                                            {{Form::submit('Delete reservering', ['class'=>'btn btn-danger delete-user'])}}
                                         </div>
-                                    </form>
+                                    {!! Form::close() !!}
                                 </li>
+
 
                                 @endif
                         @endforeach

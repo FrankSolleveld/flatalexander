@@ -35,11 +35,11 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod');
 Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','AdminController@productShow');
-Route::delete('/products/res/{{$id}}', 'AdminController@reservationDelete')->name('reservation_delete');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
 Route::get('/admin/reservations', 'AdminController@reservationShow')->name('reservations');
 Route::put('/admin/{id}/changeState/', 'AdminController@activeState');
 Route::get('/admin/usersearch', 'AdminController@searchStuff');
+Route::delete('/products/delete/{id}', 'AdminController@reservationDelete')->name('reservation_delete');
 
 //Route::get('/laundry', 'ReservationsController@index');
 

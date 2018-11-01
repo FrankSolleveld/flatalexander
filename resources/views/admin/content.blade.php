@@ -27,6 +27,11 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            @if (session('res_deleted'))
+                                <div class="alert alert-success">
+                                    {{ session('res_deleted') }}
+                                </div>
+                            @endif
                         @include ('admin.products.product')
                             <button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("reservations") }}'">Reservering overzicht</button>
                     </div>

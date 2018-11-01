@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Request;
+
+use Illuminate\Http\Request;
 use App\Admin;
 use App\Product;
 Use App\User;
@@ -68,11 +69,7 @@ class AdminController extends Controller
 
     public function reservationDelete($id){
 
-        $reservation_id = Request::get($id);
-
-        dd($reservation_id);
-
-        $res = Reservation::where('id', '=', $reservation_id)->delete();
+        $res = Reservation::where('id', '=', $id)->delete();
         return redirect()->route('admin')->with('res_deleted', 'Reservering verwijderd.');
     }
 
