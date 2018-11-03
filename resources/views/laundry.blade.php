@@ -13,10 +13,12 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        Hoi, {{ Auth::user()->firstname }}.
-                    <div class="container">
 
-                        <!-- Form select werkt niet met dropdown en hierdoor heb ik geen filter kunnen maken -->
+                        @if($user->isAuthorized === 1)
+                        Hoi, {{ Auth::user()->firstname }}.
+                    {{--<div class="container">--}}
+
+                        {{--<!-- Form select werkt niet met dropdown en hierdoor heb ik geen filter kunnen maken -->--}}
                         {{--{!! Form::open(['action' => 'ProductsController@filter', 'method' => 'GET']) !!}--}}
                         {{--<div class="form-group">--}}
 
@@ -24,7 +26,7 @@
 
                         {{--{{ Form::select('filteredProduct', [--}}
                         {{--'laundry' => 'Wasmachine',--}}
-                        {{--'dryer' => 'Droger',--}}
+                        {{--'dryer' => 'Droger'--}}
                         {{--], null, ['placeholder' => 'Kies een categorie van het apparaat.' ,'class' => 'form-control form-group']) }}--}}
 
                         {{--{{Form::submit('Submit de filter.', ['class' => 'btn btn-primary'])}}--}}
@@ -48,7 +50,9 @@
                         @endforeach
 
                             <br><button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_reservations") }}'">Jouw reserveringen</button>
-
+                        @elseif($user->isAuthorized === 0)
+                            <p>Helaas kun je deze pagine nog niet betreden. Neem contact op met de wooncommissie om je toegang te verkrijgen.</p>
+                        @endif
                     </div>
 
                     </div>

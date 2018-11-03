@@ -20,6 +20,7 @@ class ProductsController extends Controller
     {
         $res = Reservation::all();
         $prod = Product::pluck('name', 'id');
+        $user = Auth::user();
 
         $unavailableTimeslots = DB::table('reservations')
             ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
@@ -30,7 +31,7 @@ class ProductsController extends Controller
 
         $products = Product::where('active', '=', '1')->get();
 
-        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'productz' ));
+        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'user' ));
     }
 
     public function filter(Request $request){

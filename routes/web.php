@@ -37,9 +37,10 @@ Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod
 Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','AdminController@productShow');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
+Route::put('admin/users/{id}/verify', 'AdminController@verifyUser');
 Route::get('/admin/reservations', 'AdminController@reservationShow')->name('reservations');
 Route::delete('/admin/reservations/delete', 'AdminController@reservationDeleteAll');
-Route::put('/admin/{id}/changeState/', 'AdminController@activeState');
+Route::put('/admin/{id}/changeState', 'AdminController@activeState');
 Route::get('/admin/usersearch', 'AdminController@searchStuff');
 Route::delete('/products/delete/{id}', 'AdminController@reservationDelete')->name('reservation_delete');
 

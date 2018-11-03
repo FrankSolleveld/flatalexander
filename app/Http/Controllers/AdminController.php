@@ -82,7 +82,18 @@ class AdminController extends Controller
         return back();
     }
 
+    public function verifyUser(Request $request, $id) {
+            $user = User::find($id);
+
+            $user->isAuthorized = $request->input('authorize') ? 0:1;
+
+            $user->save();
+
+            return back()->with('verified', 'Gebruiker is geverifieerd.');
+
+    }
     public function activeState(Request $request, $id) {
+        // Activeert producten
 
         $product = Product::find($id);
 
