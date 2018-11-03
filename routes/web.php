@@ -38,9 +38,11 @@ Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','AdminController@productShow');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
 Route::get('/admin/reservations', 'AdminController@reservationShow')->name('reservations');
+Route::delete('/admin/reservations/delete', 'AdminController@reservationDeleteAll');
 Route::put('/admin/{id}/changeState/', 'AdminController@activeState');
 Route::get('/admin/usersearch', 'AdminController@searchStuff');
 Route::delete('/products/delete/{id}', 'AdminController@reservationDelete')->name('reservation_delete');
+
 
 //Route::get('/laundry', 'ReservationsController@index');
 
