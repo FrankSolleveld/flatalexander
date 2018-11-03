@@ -40,6 +40,8 @@ class AdminController extends Controller
     }
 
     public function productShow(Product $product){
+
+        // $reservations show all reservations where of product X. It joins to show the users full name instead of a user id etc.
         $reservations = DB::table('reservations')
             ->where('product_id', $product->id)
             ->select(DB::raw("reservations.*, timeslots.*,products.*, users.*, reservations.id as id"))
