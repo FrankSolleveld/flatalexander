@@ -33,9 +33,18 @@ class ProductsController extends Controller
         return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'productz' ));
     }
 
-    public function filter(){
-        $prod = Product::pluck('name', 'id');
-        return view('laundry')->with(compact( 'prod' ));
+    public function filter(Request $request){
+
+        if ($request->has('filteredProduct')){
+
+            $searchInput = $request->get('filteredProduct');
+
+            $products = Product::where('name', 'LIKE', '%' . $searchInput . '%')->where('active', '=' , '1')->pluck('name', 'id')->get();
+
+            return redirect()->route('laundry')->with(compact( 'products' ));
+
+        }
+
     }
 
     /**

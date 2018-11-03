@@ -19,6 +19,7 @@ Route::get('/news', function () {
 Route::get('/laundry', 'ProductsController@index')->name('laundry')->middleware('auth');
 Route::get('/laundry/{product}','ProductsController@show')->name('laundry_show');
 Route::post('/laundry/reserve', 'ReservationsController@create');
+Route::get('/laundry/filterproducts', 'ProductsController@filter');
 
 // Adding support page
 Route::get('/support', function () {

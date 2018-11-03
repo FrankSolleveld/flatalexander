@@ -16,6 +16,33 @@
                         Hoi, {{ Auth::user()->firstname }}.
                     <div class="container">
 
+                        <!-- Form select werkt niet met dropdown en hierdoor heb ik geen filter kunnen maken -->
+                        {{--{!! Form::open(['action' => 'ProductsController@filter', 'method' => 'GET']) !!}--}}
+                        {{--<div class="form-group">--}}
+
+                            {{--{{Form::token()}}--}}
+
+                        {{--{{ Form::select('filteredProduct', [--}}
+                        {{--'laundry' => 'Wasmachine',--}}
+                        {{--'dryer' => 'Droger',--}}
+                        {{--], null, ['placeholder' => 'Kies een categorie van het apparaat.' ,'class' => 'form-control form-group']) }}--}}
+
+                        {{--{{Form::submit('Submit de filter.', ['class' => 'btn btn-primary'])}}--}}
+
+                        {{--{!! Form::close() !!}--}}
+                        {{--</div>--}}
+                        {{--<form>--}}
+                          {{----}}
+                            {{--<div class="form-group">--}}
+                                {{--<label for="productSelect">Selecteer een product</label>--}}
+                                {{--<select class="form-control" id="productSelect" name="filteredProduct">--}}
+                                    {{--<option>Wasmachines</option>--}}
+                                    {{--<option>Drogers</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+
+
                         @foreach ($products as $product)
                            <br> @include ('laundry.products')
                         @endforeach
