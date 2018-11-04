@@ -18,20 +18,11 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $res = Reservation::all();
-        $prod = Product::pluck('name', 'id');
         $user = Auth::user();
-
-        $unavailableTimeslots = DB::table('reservations')
-            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
-            ->join('products', 'reservations.product_id', '=', 'products.id')
-            ->get();
-
-        $allTimeslots = Timeslot::all();
 
         $products = Product::where('active', '=', '1')->get();
 
-        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'user' ));
+        return view('laundry')->with( compact( 'products', 'user' ));
     }
 
     public function filter(Request $request){
@@ -45,6 +36,8 @@ class ProductsController extends Controller
             return redirect()->route('laundry')->with(compact( 'products' ));
 
         }
+
+        return back();
 
     }
 
