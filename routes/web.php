@@ -22,9 +22,8 @@ Route::post('/laundry/reserve', 'ReservationsController@create');
 Route::get('/laundry/filterproducts', 'ProductsController@filter');
 
 // Adding support page
-Route::get('/support', function () {
-    return view('support');
-})->name('support');
+Route::get('/support', 'ContactController@contact')->name('support');
+Route::post('/support', 'ContactController@contactSupport')->name('contactsupport');
 
 // Adding regulations page
 Route::get('/regulations', function () {

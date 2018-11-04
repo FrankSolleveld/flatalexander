@@ -51,7 +51,7 @@
 
                             <br><button type="button" class="btn btn-primary btn-sm" onclick=" window.location='{{ route("profile_reservations") }}'">Jouw reserveringen</button>
                         @elseif($user->isAuthorized === 0)
-                            <p>Helaas kun je deze pagine nog niet betreden. Neem contact op met de wooncommissie om je toegang te verkrijgen.</p>
+                            <p>Helaas kun je deze pagine nog niet betreden. Neem contact op met de wooncommissie om je toegang te verkrijgen. Dit kan door een mail te sturen die je vind bij de Support pagina.</p>
                         @endif
                     </div>
 
