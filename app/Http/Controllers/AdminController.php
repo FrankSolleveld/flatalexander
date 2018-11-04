@@ -101,6 +101,9 @@ class AdminController extends Controller
 
         $product->save();
 
+        // Delete reservations where a product that does not work isnt in use.
+        Reservation::where('product_id', '=', $id)->delete();
+
         return redirect()->route('admin')->with('status', 'Product status bijgewerkt.');
 
     }
