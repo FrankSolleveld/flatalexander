@@ -14,6 +14,7 @@
         <tr>
             <th scope="col">USER ID</th>
             <th scope="col">Administrator</th>
+            <th scope="col">Verified</th>
             <th scope="col">Voornaam</th>
             <th scope="col">Achternaam</th>
             <th scope="col">Huisnummer</th>
@@ -26,9 +27,16 @@
                     <td scope="row">{{$user->id}}</td>
                     @if($user->isAdmin === 1)
                         <td>Ja</td>
-                    @else
+                    @elseif($user->isAdmin === 0)
                         <td>Nee</td>
                     @endif
+                    <td>
+                        {!! Form::open(['action' => ['AdminController@verifyUser', $user->id], 'method' => 'POST']) !!}
+                    @method('PUT')
+                        {{Form::hidden('authorize', $user->isAuthorized)}}
+                        {{Form::submit($user->isAuthorized ? 'Onauthoriseer' : 'Authoriseer', ['class'=>($user->isAuthorized ? 'btn-outline-danger':'btn-outline-primary')])}}
+                        {!! Form::close() !!}
+                    </td>
                     <td>{{$user->firstname}}</td>
                     <td>{{$user->lastname}}</td>
                     <td>{{$user->housenumber}}</td>

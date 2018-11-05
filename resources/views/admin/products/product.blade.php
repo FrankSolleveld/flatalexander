@@ -20,7 +20,7 @@
                 <td>Non-actief</td>
             @endif
             {{--<td>{{$reservationPerDay}}</td>--}}
-            <td>{!! Form::open(['action' => ['AdminController@activeState', $product->id], 'method' => 'POST']) !!}
+            <td>{!! Form::open(['action' => ['AdminController@activeState', $product->id], 'method' => 'POST', 'onsubmit' => "return confirm('Weet je zeker dat je de status wilt wijzigen? Reserveringen van dit product worden verwijdert.');"]) !!}
             @method('PUT')
             {{Form::hidden('active', $product->active)}}
             {{Form::submit($product->active ? 'Deactiveer': 'Activeer', ['class'=>($product->active ? 'btn-outline-danger':'btn-outline-primary')])}}

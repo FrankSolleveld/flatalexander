@@ -19,11 +19,11 @@ Route::get('/news', function () {
 Route::get('/laundry', 'ProductsController@index')->name('laundry')->middleware('auth');
 Route::get('/laundry/{product}','ProductsController@show')->name('laundry_show');
 Route::post('/laundry/reserve', 'ReservationsController@create');
+Route::get('/laundry/filterproducts', 'ProductsController@filter');
 
 // Adding support page
-Route::get('/support', function () {
-    return view('support');
-})->name('support');
+Route::get('/support', 'ContactController@contact')->name('support');
+Route::post('/support', 'ContactController@contactSupport')->name('contactsupport');
 
 // Adding regulations page
 Route::get('/regulations', function () {
@@ -36,10 +36,13 @@ Route::get('/admin/create-prod', 'ProductsController@create')->name('create-prod
 Route::post('/products', 'ProductsController@store');
 Route::get('/products/{product}','AdminController@productShow');
 Route::get('/admin/users', 'AdminController@userShow')->name('users');
+Route::put('admin/users/{id}/verify', 'AdminController@verifyUser');
 Route::get('/admin/reservations', 'AdminController@reservationShow')->name('reservations');
-Route::put('/admin/{id}/changeState/', 'AdminController@activeState');
+Route::delete('/admin/reservations/delete', 'AdminController@reservationDeleteAll');
+Route::put('/admin/{id}/changeState', 'AdminController@activeState');
 Route::get('/admin/usersearch', 'AdminController@searchStuff');
 Route::delete('/products/delete/{id}', 'AdminController@reservationDelete')->name('reservation_delete');
+
 
 //Route::get('/laundry', 'ReservationsController@index');
 

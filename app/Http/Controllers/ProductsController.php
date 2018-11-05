@@ -18,24 +18,27 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $res = Reservation::all();
-        $prod = Product::pluck('name', 'id');
-
-        $unavailableTimeslots = DB::table('reservations')
-            ->join('timeslots', 'reservations.timeslot_id', '=', 'timeslots.id')
-            ->join('products', 'reservations.product_id', '=', 'products.id')
-            ->get();
-
-        $allTimeslots = Timeslot::all();
+        $user = Auth::user();
 
         $products = Product::where('active', '=', '1')->get();
 
-        return view('laundry')->with( compact('res', 'products', 'allTimeslots', 'unavailableTimeslots', 'prod', 'productz' ));
+        return view('laundry')->with( compact( 'products', 'user' ));
     }
 
-    public function filter(){
-        $prod = Product::pluck('name', 'id');
-        return view('laundry')->with(compact( 'prod' ));
+    public function filter(Request $request){
+
+        if ($request->has('filteredProduct')){
+
+            $searchInput = $request->get('filteredProduct');
+
+            $products = Product::where('name', 'LIKE', '%' . $searchInput . '%')->where('active', '=' , '1')->pluck('name', 'id')->get();
+
+            return redirect()->route('laundry')->with(compact( 'products' ));
+
+        }
+
+        return back();
+
     }
 
     /**

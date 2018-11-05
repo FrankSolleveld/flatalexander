@@ -9,6 +9,11 @@
                     <div class="card-header">Reserveringen van vandaag</div>
 
                     <div class="card-body">
+                        @if (session('res_deleted_all'))
+                            <div class="alert alert-success">
+                                {{ session('res_deleted_all') }}
+                            </div>
+                        @endif
                         <table class="table table-hover">
                             <thead>
                             <tr>
@@ -30,6 +35,13 @@
                             @endforeach
                             </tbody>
                         </table>
+                        <hr>
+                        <p>Wil je alle reserveringen verwijderen voor de dag van morgen? Dat kan via de rode knop.</p>
+                        {!! Form::open(['action' => ['AdminController@reservationDeleteAll' , Auth::user()->id], 'method' => 'POST']) !!}
+                        @method('DELETE')
+
+                        {{Form::hidden('verify' , Auth::user()->id)}}
+                        {{Form::submit('Delete reservering', ['class'=>'btn btn-danger delete-user'])}}
 
                         @include('admin.backbutton')
 

@@ -29,7 +29,7 @@
 
                                         <div class="form-group">
                                             {{--<input type="submit" class="btn btn-danger delete-user" value="Delete reservation">--}}
-                                            {{Form::submit('Delete reservering', ['class'=>'btn btn-danger delete-user'])}}
+                                            {{Form::submit('Delete reserveringen', ['class'=>'btn btn-danger delete-user'])}}
                                         </div>
                                     {!! Form::close() !!}
                                 </li>

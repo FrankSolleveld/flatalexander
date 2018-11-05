@@ -40,6 +40,8 @@ class AdminController extends Controller
     }
 
     public function productShow(Product $product){
+
+        // $reservations show all reservations where of product X. It joins to show the users full name instead of a user id etc.
         $reservations = DB::table('reservations')
             ->where('product_id', $product->id)
             ->select(DB::raw("reservations.*, timeslots.*,products.*, users.*, reservations.id as id"))
@@ -68,18 +70,39 @@ class AdminController extends Controller
     }
 
     public function reservationDelete($id){
-
         $res = Reservation::where('id', '=', $id)->delete();
         return back()->with('res_deleted', 'Reservering verwijderd.');
     }
 
+    public function reservationDeleteAll(Request $request){
+        if($request->has('verify')) {
+            Reservation::truncate();
+            return back()->with('res_deleted_all', 'Alle reserveringen verwijderd.');
+        }
+        return back();
+    }
+
+    public function verifyUser(Request $request, $id) {
+            $user = User::find($id);
+
+            $user->isAuthorized = $request->input('authorize') ? 0:1;
+
+            $user->save();
+
+            return back()->with('verified', 'Gebruiker is geverifieerd.');
+
+    }
     public function activeState(Request $request, $id) {
+        // Activeert producten
 
         $product = Product::find($id);
 
         $product->active = $request->input('active') ? 0:1;
 
         $product->save();
+
+        // Delete reservations where a product that does not work isnt in use.
+        Reservation::where('product_id', '=', $id)->delete();
 
         return redirect()->route('admin')->with('status', 'Product status bijgewerkt.');
 
