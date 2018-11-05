@@ -115,7 +115,9 @@ class AdminController extends Controller
 
             $users = User::where('firstname', 'LIKE', '%' . $searchInput . '%')
                     ->orWhere('lastname', 'LIKE', '%' .$searchInput.'%')
-                    ->orWhere('housenumber', 'LIKE', '%'.$searchInput.'%')->get();
+                    ->orWhere('housenumber', 'LIKE', '%'.$searchInput.'%')
+                    ->orWhere('isAuthorized', 'LIKE', '%'.$searchInput.'%')
+                    ->get();
         }
 
         return view('admin.users')->with(compact('users'));
